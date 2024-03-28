@@ -49,18 +49,35 @@ app.get("/", async(req, res) => {
 });
 
 /* Lägg till kurs */
-app.post("/", async(req, res) => {
-    /* Data */
-    const kurskod = req.body.kurskod;
-    const kursnamn = req.body.kursnamn;
-    const progression = req.body.progression;
-    const syllabus = req.body.syllabus;
+app.post("/addCourse", async (req, res) => {
+    try {
+        /* Data */
+        const kurskod = req.body.kurskod;
+        const kursnamn = req.body.kursnamn;
+        const progression = req.body.progression;
+        const syllabus = req.body.syllabus;
 
-    /* Sql-fråga */
-    const result = await client.query("INSERT INTO COURSES(COURSENAME, COURSECODE, SYLLABUS, PROGRESSION) VALUES ($1, $2, $3, $4)",
-    [kursnamn, kurskod, syllabus, progression]
-    );
-    res.redirect("/");
+        /* Sql-fråga */
+        const result = await client.query("INSERT INTO COURSES(COURSENAME, COURSECODE, SYLLABUS, PROGRESSION) VALUES ($1, $2, $3, $4)",
+            [kursnamn, kurskod, syllabus, progression]
+        );
+        res.redirect("/");
+    } catch (err) {
+        console.error("Fel vid insättning av kurs:", err);
+    }
+});
+
+
+/* Ta bort kurs */
+app.post("/deleteCourse", async(req, res) => {
+    const courseId = req.body.courseId;
+
+    try {
+        await client.query("DELETE FROM COURSES WHERE COURSEID = $1", [courseId]);
+        res.redirect("/");
+    } catch (err) {
+        console.error("Fel vid borttagning av kurs:", err);
+    }
 });
 
 
