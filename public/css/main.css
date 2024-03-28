@@ -193,8 +193,18 @@ main {
     margin-top: 10em;
 }
 
+#removeCourse {
+    margin: 10px 0;
+}
+#removeCourse button {
+    background-color: red;
+}
+
 main h1 {
     margin-bottom: 20px;
+}
+main h2 {
+    text-align: center;
 }
 
 form {

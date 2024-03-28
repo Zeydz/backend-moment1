@@ -31,32 +31,29 @@
                 <span class="menu-text">Stäng</span>
             </button>
             <ul>
-                <li><a href="index.ejs">HEM</a></li>
-                <li><a href="addcourse.ejs">LÄGG TILL KURS</a></li>
-                <li><a href="about.ejs">OM</a></li>
+                <li><a href="/">HEM</a></li>
+                <li><a href="addcourse">LÄGG TILL KURS</a></li>
+                <li><a href="about">OM</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <form id="addCourseForm">
-            <label for="code">Kurskod:</label>
-            <input type="text" id="code" required>
-            <label for="name">Kursnamn:</label>
-            <input type="text" id="name" required>
-            <label for="progression">Progression:</label>
-            <select id="progression" required>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-            </select>
-            <label for="syllabus">Kursplan (URL):</label>
-            <input type="text" id="syllabus" required>
-            <button type="submit" id="submit">Lägg till kurs</button>
-            <button id="remove">Rensa kurser</button>
-        </form>
-    
         <!-- Lista för att visa kurser -->
-        <ul id="courseList"></ul>
+        <h2>Befintliga kurser</h2>
+        <ul id="courseList">
+            <% content.forEach(cont => { %>
+                <li>
+                    <strong>Kurskod:</strong> <%= cont.coursecode %><br>
+                    <strong>Kursnamn:</strong> <%= cont.coursename %><br>
+                    <strong>Progression:</strong> <%= cont.progression %><br>
+                    <strong>Syllabus:</strong> <%= cont.syllabus %>
+                    <form action="/deleteCourse" method="post" id="removeCourse">
+                        <input type="hidden" name="courseId" value="<%= cont.courseid %>">
+                        <button type="submit">Ta bort kurs</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
     </main>
     <script src="/js/scripts.js"></script>
 </body>
