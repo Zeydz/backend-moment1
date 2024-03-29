@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om</title>
     <link rel="stylesheet" href="/css/main.css">
-    <title>Titel</title>
+    
 </head>
 <body>
-    <h1>Detta är ett test 3</h1>
+    <header>
+        <a href="/" id="logo">Backend - Moment 1</a>
+        <!-- Meny knapp för att öppna mobilmenyn-->
+        <button class="menu-btn open" id="open-menu">
+            <span class="menu-icon">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </span>
+            <span class="menu-text">Meny</span>
+        </button>
+
+        <!-- navigering -->
+        <nav id="nav-menu" aria-label=”huvudmeny” role="navigation">
+            <!-- Knapp som visas om mobilmenyn är utfälld -->
+            <button class="menu-btn close" id="close-menu">
+                <span class="menu-icon">
+                    <span class="bars cross1"></span>
+                    <span class="bars cross2"></span>
+                </span>
+                <span class="menu-text">Stäng</span>
+            </button>
+            <ul>
+                <li><a href="/">HEM</a></li>
+                <li><a href="addcourse">LÄGG TILL KURS</a></li>
+                <li><a href="about">OM</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Lista för att visa kurser -->
+        <h2>Om uppgiften</h2>
+        <p>I denna uppgift har jag skapat en databasanslutning till min relationsdatabas, i detta fall PostgreSQL. Denna webbplats erbjuder funktionen att lägga till och ta bort kurser från webbplatsen och den kopplade databasen. Databasen körs på Render, vilket gör att databasen alltid är tillgänglig och redo att användas. Varje kurs innehåller information om kurskod, kursnamn, progression och syllabus. Det finns även möjlighet att ta bort kurser.</p>
+        <p>Detta var en mycket rolig uppgift att utföra. Detta är min favoritdel av Webbutveckling, själva backend där det händer grejer på riktigt. Jag tycker att uppgiften gick bra att utföra, det var inga större svårigheter med varken Express, EJS eller PostgreSQL. Jag ser fram emot fler uppgifter liknande denna. </p>
+    </main>
+    <script src="/js/scripts.js"></script>
 </body>
 </html>
