@@ -57,6 +57,11 @@ app.post("/addCourse", async (req, res) => {
         const progression = req.body.progression;
         const syllabus = req.body.syllabus;
 
+        /* Kontrollerar att alla fält är ifyllda. */
+        if (!kurskod || !kursnamn || !progression || !syllabus) {
+            return res.status(400).send("Alla fält måste vara ifyllda. Försök igen.");
+        }
+
         /* Sql-fråga */
         const result = await client.query("INSERT INTO COURSES(COURSENAME, COURSECODE, SYLLABUS, PROGRESSION) VALUES ($1, $2, $3, $4)",
             [kursnamn, kurskod, syllabus, progression]
@@ -64,6 +69,7 @@ app.post("/addCourse", async (req, res) => {
         res.redirect("/");
     } catch (err) {
         console.error("Fel vid insättning av kurs:", err);
+        res.status(500).send("Ett fel uppstod vid insättning av kurs.");
     }
 });
 
