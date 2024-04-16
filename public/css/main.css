@@ -301,3 +301,8 @@ main p {
         width: 80%;
     }
 }
+
+.error {
+    text-align: center;
+    color: red;
+}
