@@ -44,6 +44,14 @@
                 <%= error %>
             </p>
             <% } %>
+        <!-- If sats för success -->
+        <% if (locals.success) { %>
+            <p class="success">
+                <%= success %>
+            </p>
+            <% } %>
+
+
                 <form id="addCourseForm" method="post" action="/addCourse">
                     <label for="code">Kurskod:</label>
                     <input type="text" id="code" name="kurskod" required>

@@ -56,6 +56,7 @@ app.post("/addCourse", async (req, res) => {
     const progression = req.body.progression;
     const syllabus = req.body.syllabus;
     let error = null;
+    let success = null;
 
     /* Kontrollerar att alla fält är ifyllda. */
     if (
@@ -70,13 +71,14 @@ app.post("/addCourse", async (req, res) => {
       });
       return;
     } else {
+        success = "Formuläret blev skickat framgångsrikt!"
       /* Sql-fråga */
       const result = await client.query(
         "INSERT INTO COURSES(COURSENAME, COURSECODE, SYLLABUS, PROGRESSION) VALUES ($1, $2, $3, $4)",
         [kursnamn, kurskod, syllabus, progression]
       );
       res.render("addcourse", {
-        error: error,
+        success: success,
       });
     }
   } catch (err) {
