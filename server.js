@@ -65,7 +65,7 @@ app.post("/addCourse", async (req, res) => {
       syllabus === ""
     ) {
       error = "Du måste fylla i alla fält, försök igen.";
-      res.render("addCourse", {
+      res.render("addcourse", {
         error: error,
       });
       return;
@@ -75,7 +75,7 @@ app.post("/addCourse", async (req, res) => {
         "INSERT INTO COURSES(COURSENAME, COURSECODE, SYLLABUS, PROGRESSION) VALUES ($1, $2, $3, $4)",
         [kursnamn, kurskod, syllabus, progression]
       );
-      res.render("addCourse", {
+      res.render("addcourse", {
         error: error,
       });
     }
